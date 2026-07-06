@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>모바일 청첩장</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
+      background: #faf7f2;
+      color: #4a4038;
+      display: flex;
+      justify-content: center;
+      min-height: 100vh;
+    }
+    .card {
+      width: 100%;
+      max-width: 420px;
+      background: #fffdf9;
+      box-shadow: 0 0 24px rgba(0,0,0,0.06);
+      text-align: center;
+      padding: 64px 32px;
+    }
+    .label {
+      font-size: 13px;
+      letter-spacing: 4px;
+      color: #b8a48f;
+      margin-bottom: 24px;
+    }
+    h1 {
+      font-size: 26px;
+      font-weight: 500;
+      line-height: 1.6;
+      margin-bottom: 40px;
+    }
+    .names {
+      font-size: 20px;
+      margin: 32px 0;
+      line-height: 2;
+    }
+    .heart { color: #d9a7a0; }
+    .info {
+      font-size: 15px;
+      line-height: 1.9;
+      color: #7a6f63;
+      margin-top: 40px;
+    }
+    .divider {
+      width: 40px;
+      height: 1px;
+      background: #d9cbb8;
+      margin: 40px auto;
+    }
+    footer {
+      margin-top: 56px;
+      font-size: 12px;
+      color: #c4b8a8;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="label">WEDDING INVITATION</div>
+    <h1>저희 결혼합니다</h1>
+    <div class="divider"></div>
+    <div class="names">
+      신랑 ○○○ <span class="heart">♥</span> 신부 ○○○
+    </div>
+    <div class="divider"></div>
+    <div class="info">
+      2026년 ○월 ○일 ○요일 오후 ○시<br>
+      ○○웨딩홀 ○층 ○○홀
+    </div>
+    <footer>이 페이지는 준비 중입니다</footer>
+  </div>
+</body>
+</html>
