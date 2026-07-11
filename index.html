@@ -2,77 +2,724 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>모바일 청첩장</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>재영 ♥ ○○ 모바일 청첩장</title>
+
+  <!-- 카카오톡/SNS 공유 미리보기 (문구·사진 확정되면 교체) -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="장재영 ♥ ○○○ 결혼합니다">
+  <meta property="og:description" content="2026년 10월 24일 토요일 오후 4시 · ○○웨딩홀">
+  <meta property="og:image" content="https://jjyviva.github.io/wedding-invitation/photos/img10.jpg">
+  <meta property="og:url" content="https://jjyviva.github.io/wedding-invitation/">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@200;300;400;500&family=Crimson+Pro:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
+
   <style>
+    :root {
+      --bg: #f1ece4;
+      --surface: #faf8f4;
+      --ink: #4a423b;
+      --sub: #97897b;
+      --accent: #b08d84;
+      --hairline: #ded3c5;
+    }
     * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
     body {
-      font-family: 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
-      background: #faf7f2;
-      color: #4a4038;
+      font-family: 'Noto Serif KR', 'Crimson Pro', serif;
+      background: var(--bg);
+      color: var(--ink);
+      -webkit-font-smoothing: antialiased;
       display: flex;
       justify-content: center;
-      min-height: 100vh;
     }
-    .card {
+    .page {
       width: 100%;
-      max-width: 420px;
-      background: #fffdf9;
-      box-shadow: 0 0 24px rgba(0,0,0,0.06);
-      text-align: center;
-      padding: 64px 32px;
+      max-width: 430px;
+      background: var(--surface);
+      box-shadow: 0 0 40px rgba(74, 66, 59, 0.10);
+      overflow: hidden;
     }
+    section { padding: 72px 28px; text-align: center; }
+
     .label {
-      font-size: 13px;
-      letter-spacing: 4px;
-      color: #b8a48f;
-      margin-bottom: 24px;
-    }
-    h1 {
-      font-size: 26px;
-      font-weight: 500;
-      line-height: 1.6;
-      margin-bottom: 40px;
-    }
-    .names {
-      font-size: 20px;
-      margin: 32px 0;
-      line-height: 2;
-    }
-    .heart { color: #d9a7a0; }
-    .info {
-      font-size: 15px;
-      line-height: 1.9;
-      color: #7a6f63;
-      margin-top: 40px;
-    }
-    .divider {
-      width: 40px;
-      height: 1px;
-      background: #d9cbb8;
-      margin: 40px auto;
-    }
-    footer {
-      margin-top: 56px;
+      font-family: 'Crimson Pro', serif;
       font-size: 12px;
-      color: #c4b8a8;
+      font-weight: 300;
+      letter-spacing: 5px;
+      color: var(--accent);
+      margin-bottom: 18px;
     }
+    .section-title {
+      font-size: 21px;
+      font-weight: 400;
+      letter-spacing: 2px;
+      margin-bottom: 34px;
+    }
+    .hairline {
+      width: 36px; height: 1px;
+      background: var(--hairline);
+      margin: 36px auto;
+      border: 0;
+    }
+
+    /* ── 1페이지: 표지 ───────────────────────── */
+    .cover {
+      min-height: 100svh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 56px 28px 40px;
+    }
+    .cover .names {
+      font-size: 27px;
+      font-weight: 300;
+      letter-spacing: 4px;
+      line-height: 1.5;
+      margin-bottom: 6px;
+    }
+    .cover .names .and {
+      display: block;
+      font-size: 14px;
+      color: var(--sub);
+      letter-spacing: 8px;
+      margin: 6px 0;
+    }
+    .cover .names-en {
+      font-family: 'Crimson Pro', serif;
+      font-style: italic;
+      font-weight: 300;
+      font-size: 15px;
+      color: var(--sub);
+      letter-spacing: 2px;
+      margin-bottom: 30px;
+    }
+    .cover-photo {
+      width: min(78%, 300px);
+      aspect-ratio: 3 / 4.1;
+      margin: 0 auto 30px;
+      border-radius: 160px 160px 8px 8px;
+      object-fit: cover;
+      display: block;
+    }
+    .cover .when-where {
+      font-size: 14.5px;
+      font-weight: 300;
+      line-height: 2;
+      color: var(--sub);
+      letter-spacing: 1px;
+    }
+    .scroll-hint {
+      margin-top: 34px;
+      color: var(--accent);
+      font-size: 18px;
+      animation: bob 1.8s ease-in-out infinite;
+    }
+    @keyframes bob { 0%,100% { transform: translateY(0); opacity:.5 } 50% { transform: translateY(7px); opacity:1 } }
+
+    /* ── 2페이지 최상단: D-day ───────────────── */
+    .dday {
+      background: var(--bg);
+      padding: 60px 28px 56px;
+      border-top: 1px solid var(--hairline);
+      border-bottom: 1px solid var(--hairline);
+    }
+    .dday .big {
+      font-family: 'Crimson Pro', serif;
+      font-size: 58px;
+      font-weight: 300;
+      letter-spacing: 4px;
+      color: var(--ink);
+      line-height: 1.1;
+    }
+    .dday .caption {
+      font-size: 13px;
+      color: var(--sub);
+      letter-spacing: 3px;
+      margin: 14px 0 26px;
+    }
+    .countdown {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+    }
+    .countdown .unit {
+      width: 64px;
+      padding: 12px 0 10px;
+      background: var(--surface);
+      border: 1px solid var(--hairline);
+      border-radius: 10px;
+    }
+    .countdown .num {
+      font-family: 'Crimson Pro', serif;
+      font-size: 24px;
+      font-weight: 400;
+      font-variant-numeric: tabular-nums;
+    }
+    .countdown .txt {
+      font-size: 10.5px;
+      color: var(--sub);
+      margin-top: 3px;
+      letter-spacing: 1px;
+    }
+    .dday .date-line {
+      margin-top: 24px;
+      font-size: 13.5px;
+      font-weight: 300;
+      color: var(--sub);
+      letter-spacing: 1.5px;
+    }
+
+    /* ── 초대글 ─────────────────────────────── */
+    .invite .greeting {
+      font-size: 15px;
+      font-weight: 300;
+      line-height: 2.15;
+      color: var(--ink);
+      word-break: keep-all;
+    }
+    .parents {
+      font-size: 15.5px;
+      font-weight: 300;
+      line-height: 2.4;
+      letter-spacing: 0.5px;
+    }
+    .parents .rel {
+      font-size: 12.5px;
+      color: var(--accent);
+      margin: 0 8px;
+    }
+
+    /* ── 갤러리 ─────────────────────────────── */
+    .gallery { padding-left: 0; padding-right: 0; }
+    .carousel-wrap { position: relative; }
+    .carousel {
+      display: flex;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      gap: 12px;
+      padding: 0 40px;
+    }
+    .carousel::-webkit-scrollbar { display: none; }
+    .carousel .slide {
+      flex: 0 0 100%;
+      scroll-snap-align: center;
+      scroll-snap-stop: always;
+    }
+    .carousel .slide img {
+      width: 100%;
+      aspect-ratio: 3 / 4;
+      object-fit: cover;
+      border-radius: 12px;
+      display: block;
+    }
+    .car-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 34px; height: 34px;
+      border: 0;
+      border-radius: 50%;
+      background: rgba(250, 248, 244, 0.85);
+      color: var(--ink);
+      font-size: 15px;
+      cursor: pointer;
+      box-shadow: 0 1px 6px rgba(0,0,0,0.12);
+    }
+    .car-btn.prev { left: 10px; }
+    .car-btn.next { right: 10px; }
+    .car-meta {
+      margin-top: 18px;
+      font-family: 'Crimson Pro', serif;
+      font-size: 13px;
+      letter-spacing: 2px;
+      color: var(--sub);
+    }
+    .btn-outline {
+      display: inline-block;
+      margin-top: 22px;
+      padding: 11px 34px;
+      font-family: inherit;
+      font-size: 13.5px;
+      letter-spacing: 3px;
+      color: var(--ink);
+      background: transparent;
+      border: 1px solid var(--hairline);
+      border-radius: 999px;
+      cursor: pointer;
+    }
+
+    /* ── 오시는 길 ──────────────────────────── */
+    .venue .place {
+      font-size: 17px;
+      font-weight: 400;
+      margin-bottom: 8px;
+    }
+    .venue .addr {
+      font-size: 13.5px;
+      font-weight: 300;
+      color: var(--sub);
+      line-height: 1.9;
+    }
+    .map-btns {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 26px;
+    }
+    .map-btns a {
+      padding: 10px 22px;
+      font-size: 12.5px;
+      letter-spacing: 1px;
+      color: var(--ink);
+      text-decoration: none;
+      border: 1px solid var(--hairline);
+      border-radius: 999px;
+      background: var(--surface);
+    }
+
+    /* ── 마음 전하실 곳 ─────────────────────── */
+    .accounts { background: var(--bg); border-top: 1px solid var(--hairline); }
+    .acc-group { max-width: 330px; margin: 0 auto 12px; }
+    .acc-toggle {
+      width: 100%;
+      padding: 13px 18px;
+      font-family: inherit;
+      font-size: 14px;
+      letter-spacing: 2px;
+      color: var(--ink);
+      background: var(--surface);
+      border: 1px solid var(--hairline);
+      border-radius: 10px;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .acc-toggle .arrow { transition: transform .25s; color: var(--sub); font-size: 12px; }
+    .acc-group.open .acc-toggle .arrow { transform: rotate(180deg); }
+    .acc-body {
+      display: none;
+      background: var(--surface);
+      border: 1px solid var(--hairline);
+      border-top: 0;
+      border-radius: 0 0 10px 10px;
+      padding: 4px 18px 14px;
+    }
+    .acc-group.open .acc-body { display: block; }
+    .acc-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 11px 0;
+      border-bottom: 1px dashed var(--hairline);
+      font-size: 13px;
+      font-weight: 300;
+    }
+    .acc-row:last-child { border-bottom: 0; }
+    .acc-row .who { color: var(--sub); font-size: 12px; display: block; }
+    .acc-row .copy {
+      border: 1px solid var(--hairline);
+      background: transparent;
+      font-family: inherit;
+      font-size: 11.5px;
+      color: var(--sub);
+      padding: 5px 12px;
+      border-radius: 999px;
+      cursor: pointer;
+      flex-shrink: 0;
+      margin-left: 12px;
+    }
+
+    footer {
+      padding: 44px 28px 56px;
+      text-align: center;
+      font-family: 'Crimson Pro', serif;
+      font-style: italic;
+      font-size: 12.5px;
+      color: var(--sub);
+      letter-spacing: 1px;
+    }
+
+    /* ── 전체보기 오버레이 ──────────────────── */
+    .fullview {
+      position: fixed;
+      inset: 0;
+      z-index: 50;
+      background: var(--surface);
+      display: none;
+      flex-direction: column;
+    }
+    .fullview.open { display: flex; }
+    .fullview header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 20px;
+      border-bottom: 1px solid var(--hairline);
+      flex-shrink: 0;
+    }
+    .fullview header .t { font-size: 14px; letter-spacing: 3px; }
+    .fullview header button {
+      border: 0; background: transparent;
+      font-size: 20px; color: var(--ink);
+      cursor: pointer; padding: 4px 8px;
+    }
+    .fullview .grid {
+      overflow-y: auto;
+      padding: 12px;
+      columns: 2;
+      column-gap: 8px;
+    }
+    .fullview .grid img {
+      width: 100%;
+      border-radius: 8px;
+      margin-bottom: 8px;
+      display: block;
+      cursor: pointer;
+      break-inside: avoid;
+    }
+
+    /* ── 라이트박스 ─────────────────────────── */
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 60;
+      background: rgba(20, 17, 15, 0.96);
+      display: none;
+      align-items: center;
+      justify-content: center;
+    }
+    .lightbox.open { display: flex; }
+    .lightbox img {
+      max-width: 100%;
+      max-height: 88vh;
+      object-fit: contain;
+      user-select: none;
+      -webkit-user-drag: none;
+    }
+    .lightbox .lb-close {
+      position: absolute; top: 14px; right: 16px;
+      border: 0; background: transparent;
+      color: #f0ece6; font-size: 26px; cursor: pointer;
+      z-index: 2;
+    }
+    .lightbox .lb-count {
+      position: absolute; top: 22px; left: 20px;
+      font-family: 'Crimson Pro', serif;
+      color: #cfc6bb; font-size: 13px; letter-spacing: 2px;
+    }
+    .lightbox .lb-btn {
+      position: absolute; top: 50%;
+      transform: translateY(-50%);
+      border: 0;
+      background: rgba(250,248,244,0.12);
+      color: #f0ece6;
+      width: 38px; height: 38px;
+      border-radius: 50%;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    .lightbox .lb-btn.prev { left: 12px; }
+    .lightbox .lb-btn.next { right: 12px; }
+
+    .reveal { opacity: 0; transform: translateY(18px); transition: opacity .8s ease, transform .8s ease; }
+    .reveal.on { opacity: 1; transform: none; }
   </style>
 </head>
 <body>
-  <div class="card">
+<div class="page">
+
+  <!-- ═══ 1페이지: 표지 ═══ -->
+  <section class="cover">
     <div class="label">WEDDING INVITATION</div>
-    <h1>저희 결혼합니다</h1>
-    <div class="divider"></div>
-    <div class="names">
-      신랑 ○○○ <span class="heart">♥</span> 신부 ○○○
-    </div>
-    <div class="divider"></div>
-    <div class="info">
-      2026년 ○월 ○일 ○요일 오후 ○시<br>
+    <!-- TODO: 신랑·신부 이름 -->
+    <div class="names">장재영<span class="and">그리고</span>○○○</div>
+    <div class="names-en">Jaeyoung &amp; ○○○</div>
+    <img class="cover-photo" src="photos/img10.jpg" alt="웨딩 사진">
+    <!-- TODO: 예식 일시·장소 -->
+    <div class="when-where">
+      2026년 10월 24일 토요일 오후 4시<br>
       ○○웨딩홀 ○층 ○○홀
     </div>
-    <footer>이 페이지는 준비 중입니다</footer>
-  </div>
+    <div class="scroll-hint">⌄</div>
+  </section>
+
+  <!-- ═══ 2페이지 최상단: D-day ═══ -->
+  <section class="dday">
+    <div class="label">SAVE THE DATE</div>
+    <div class="big" id="dday-big">D-000</div>
+    <div class="caption">예식까지 남은 시간</div>
+    <div class="countdown">
+      <div class="unit"><div class="num" id="cd-d">0</div><div class="txt">일</div></div>
+      <div class="unit"><div class="num" id="cd-h">0</div><div class="txt">시간</div></div>
+      <div class="unit"><div class="num" id="cd-m">0</div><div class="txt">분</div></div>
+      <div class="unit"><div class="num" id="cd-s">0</div><div class="txt">초</div></div>
+    </div>
+    <div class="date-line">2026. 10. 24. SAT PM 4:00</div>
+  </section>
+
+  <!-- ═══ 초대글 ═══ -->
+  <section class="invite reveal">
+    <div class="label">INVITATION</div>
+    <h2 class="section-title">소중한 분들을 초대합니다</h2>
+    <!-- TODO: 인사말 -->
+    <p class="greeting">
+      서로 다른 두 사람이 만나<br>
+      같은 곳을 바라보며 걸어가려 합니다.<br>
+      저희 두 사람의 새로운 시작을<br>
+      가까이에서 축복해 주시면<br>
+      더없는 기쁨으로 간직하겠습니다.
+    </p>
+    <hr class="hairline">
+    <!-- TODO: 혼주 성함 -->
+    <div class="parents">
+      ○○○ · ○○○ <span class="rel">의 아들</span> 재영<br>
+      ○○○ · ○○○ <span class="rel">의 딸</span> ○○
+    </div>
+  </section>
+
+  <!-- ═══ 갤러리 ═══ -->
+  <section class="gallery reveal">
+    <div class="label">GALLERY</div>
+    <h2 class="section-title">우리의 순간들</h2>
+    <div class="carousel-wrap">
+      <div class="carousel" id="carousel"></div>
+      <button class="car-btn prev" onclick="slideBy(-1)" aria-label="이전 사진">‹</button>
+      <button class="car-btn next" onclick="slideBy(1)" aria-label="다음 사진">›</button>
+    </div>
+    <div class="car-meta"><span id="car-idx">1</span> / <span id="car-total"></span></div>
+    <button class="btn-outline" onclick="openFullview()">전체 보기</button>
+  </section>
+
+  <!-- ═══ 오시는 길 ═══ -->
+  <section class="venue reveal">
+    <div class="label">LOCATION</div>
+    <h2 class="section-title">오시는 길</h2>
+    <!-- TODO: 예식장 이름·주소 -->
+    <div class="place">○○웨딩홀 ○층 ○○홀</div>
+    <div class="addr">
+      서울특별시 ○○구 ○○로 000<br>
+      지하철 0호선 ○○역 0번 출구 도보 5분
+    </div>
+    <div class="map-btns">
+      <!-- TODO: 지도 링크 연결 -->
+      <a href="#" onclick="alert('예식장이 정해지면 연결됩니다'); return false;">네이버 지도</a>
+      <a href="#" onclick="alert('예식장이 정해지면 연결됩니다'); return false;">카카오맵</a>
+    </div>
+  </section>
+
+  <!-- ═══ 마음 전하실 곳 ═══ -->
+  <section class="accounts reveal">
+    <div class="label">GIFT</div>
+    <h2 class="section-title">마음 전하실 곳</h2>
+    <div class="acc-group">
+      <button class="acc-toggle" onclick="toggleAcc(this)">신랑측 계좌번호 <span class="arrow">⌄</span></button>
+      <div class="acc-body">
+        <!-- TODO: 계좌번호 -->
+        <div class="acc-row"><div><span class="who">신랑</span>○○은행 000-0000-0000</div><button class="copy" onclick="copyText('○○은행 000-0000-0000', this)">복사</button></div>
+        <div class="acc-row"><div><span class="who">아버지</span>○○은행 000-0000-0000</div><button class="copy" onclick="copyText('○○은행 000-0000-0000', this)">복사</button></div>
+      </div>
+    </div>
+    <div class="acc-group">
+      <button class="acc-toggle" onclick="toggleAcc(this)">신부측 계좌번호 <span class="arrow">⌄</span></button>
+      <div class="acc-body">
+        <div class="acc-row"><div><span class="who">신부</span>○○은행 000-0000-0000</div><button class="copy" onclick="copyText('○○은행 000-0000-0000', this)">복사</button></div>
+        <div class="acc-row"><div><span class="who">아버지</span>○○은행 000-0000-0000</div><button class="copy" onclick="copyText('○○은행 000-0000-0000', this)">복사</button></div>
+      </div>
+    </div>
+  </section>
+
+  <footer>Jaeyoung &amp; ○○○ · 24 October 2026</footer>
+</div>
+
+<!-- 전체보기 오버레이 -->
+<div class="fullview" id="fullview">
+  <header>
+    <span class="t">GALLERY</span>
+    <button onclick="closeFullview()" aria-label="닫기">✕</button>
+  </header>
+  <div class="grid" id="fullgrid"></div>
+</div>
+
+<!-- 라이트박스 -->
+<div class="lightbox" id="lightbox">
+  <span class="lb-count" id="lb-count"></span>
+  <button class="lb-close" onclick="closeLightbox()" aria-label="닫기">✕</button>
+  <button class="lb-btn prev" onclick="lbMove(-1)" aria-label="이전">‹</button>
+  <img id="lb-img" src="" alt="사진 크게 보기">
+  <button class="lb-btn next" onclick="lbMove(1)" aria-label="다음">›</button>
+</div>
+
+<script>
+  // ── 사진 목록 (스냅 촬영본 → 여행 → 일상 순) ──
+  var PHOTOS = [
+    'photos/img10.jpg','photos/img11.jpg','photos/img12.jpg','photos/img13.jpg','photos/img14.jpg',
+    'photos/img15.jpg','photos/img16.jpg','photos/img17.jpg','photos/img18.jpg','photos/img19.jpg',
+    'photos/img20.jpg','photos/img21.jpg','photos/img22.jpg','photos/img23.jpg','photos/img24.jpg',
+    'photos/img25.jpg','photos/img26.jpg','photos/img27.jpg','photos/img28.jpg','photos/img29.jpg',
+    'photos/img30.jpg',
+    'photos/img01.jpg','photos/img02.jpg','photos/img03.jpg','photos/img04.jpg','photos/img05.jpg',
+    'photos/img06.jpg','photos/img07.jpg','photos/img08.jpg','photos/img09.jpg'
+  ];
+
+  // TODO: 예식 일시 확정되면 교체
+  var WEDDING_AT = new Date('2026-10-24T16:00:00+09:00');
+
+  // ── D-day 카운트다운 ──
+  function pad(n) { return n < 10 ? '0' + n : '' + n; }
+  function tick() {
+    var now = new Date();
+    var diff = WEDDING_AT - now;
+    var dayMs = 86400000;
+    var kstMid = function (d) {
+      var k = new Date(d.toLocaleString('en-US', { timeZone: 'Asia/Seoul' }));
+      k.setHours(0, 0, 0, 0);
+      return k;
+    };
+    var days = Math.round((kstMid(WEDDING_AT) - kstMid(now)) / dayMs);
+    document.getElementById('dday-big').textContent =
+      days > 0 ? 'D-' + days : (days === 0 ? 'D-DAY' : 'D+' + (-days));
+    if (diff < 0) diff = 0;
+    document.getElementById('cd-d').textContent = Math.floor(diff / dayMs);
+    document.getElementById('cd-h').textContent = pad(Math.floor(diff % dayMs / 3600000));
+    document.getElementById('cd-m').textContent = pad(Math.floor(diff % 3600000 / 60000));
+    document.getElementById('cd-s').textContent = pad(Math.floor(diff % 60000 / 1000));
+  }
+  tick();
+  setInterval(tick, 1000);
+
+  // ── 갤러리 캐러셀 ──
+  var carousel = document.getElementById('carousel');
+  PHOTOS.forEach(function (src, i) {
+    var d = document.createElement('div');
+    d.className = 'slide';
+    d.innerHTML = '<img src="' + src + '" alt="갤러리 사진 ' + (i + 1) + '" loading="lazy">';
+    d.querySelector('img').addEventListener('click', function () { openLightbox(i); });
+    carousel.appendChild(d);
+  });
+  document.getElementById('car-total').textContent = PHOTOS.length;
+
+  function slideStride() {
+    var slide = carousel.querySelector('.slide');
+    return slide.offsetWidth + 12; /* gap */
+  }
+  function slideIndex() {
+    return Math.min(PHOTOS.length - 1, Math.max(0, Math.round(carousel.scrollLeft / slideStride())));
+  }
+  var carIdx = 0;
+  function setCarIdx(i) {
+    carIdx = i;
+    document.getElementById('car-idx').textContent = i + 1;
+  }
+  function slideBy(dir) {
+    var target = Math.min(PHOTOS.length - 1, Math.max(0, carIdx + dir));
+    var left = target * slideStride();
+    setCarIdx(target);
+    carousel.scrollTo({ left: left, behavior: 'smooth' });
+    /* smooth 스크롤 미지원 환경 폴백 */
+    setTimeout(function () {
+      if (Math.abs(carousel.scrollLeft - left) > slideStride() / 2) carousel.scrollLeft = left;
+    }, 250);
+  }
+  carousel.addEventListener('scroll', function () {
+    setCarIdx(slideIndex());
+  }, { passive: true });
+
+  // ── 전체보기 ──
+  var grid = document.getElementById('fullgrid');
+  var gridBuilt = false;
+  function openFullview() {
+    if (!gridBuilt) {
+      PHOTOS.forEach(function (src, i) {
+        var img = document.createElement('img');
+        img.src = src;
+        img.loading = 'lazy';
+        img.alt = '사진 ' + (i + 1);
+        img.addEventListener('click', function () { openLightbox(i); });
+        grid.appendChild(img);
+      });
+      gridBuilt = true;
+    }
+    document.getElementById('fullview').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeFullview() {
+    document.getElementById('fullview').classList.remove('open');
+    if (!document.getElementById('lightbox').classList.contains('open'))
+      document.body.style.overflow = '';
+  }
+
+  // ── 라이트박스 ──
+  var lbIdx = 0;
+  function openLightbox(i) {
+    lbIdx = i;
+    lbRender();
+    document.getElementById('lightbox').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeLightbox() {
+    document.getElementById('lightbox').classList.remove('open');
+    if (!document.getElementById('fullview').classList.contains('open'))
+      document.body.style.overflow = '';
+  }
+  function lbMove(dir) {
+    lbIdx = (lbIdx + dir + PHOTOS.length) % PHOTOS.length;
+    lbRender();
+  }
+  function lbRender() {
+    document.getElementById('lb-img').src = PHOTOS[lbIdx];
+    document.getElementById('lb-count').textContent = (lbIdx + 1) + ' / ' + PHOTOS.length;
+  }
+  // 스와이프
+  var touchX = null;
+  var lightbox = document.getElementById('lightbox');
+  lightbox.addEventListener('touchstart', function (e) { touchX = e.touches[0].clientX; }, { passive: true });
+  lightbox.addEventListener('touchend', function (e) {
+    if (touchX === null) return;
+    var dx = e.changedTouches[0].clientX - touchX;
+    if (Math.abs(dx) > 40) lbMove(dx < 0 ? 1 : -1);
+    touchX = null;
+  }, { passive: true });
+  document.addEventListener('keydown', function (e) {
+    if (!lightbox.classList.contains('open')) return;
+    if (e.key === 'ArrowLeft') lbMove(-1);
+    if (e.key === 'ArrowRight') lbMove(1);
+    if (e.key === 'Escape') closeLightbox();
+  });
+
+  // ── 계좌 아코디언 / 복사 ──
+  function toggleAcc(btn) { btn.parentElement.classList.toggle('open'); }
+  function copyText(text, btn) {
+    var done = function () {
+      var old = btn.textContent;
+      btn.textContent = '복사됨';
+      setTimeout(function () { btn.textContent = old; }, 1500);
+    };
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(done);
+    } else {
+      var ta = document.createElement('textarea');
+      ta.value = text;
+      document.body.appendChild(ta);
+      ta.select();
+      document.execCommand('copy');
+      document.body.removeChild(ta);
+      done();
+    }
+  }
+
+  // ── 스크롤 등장 효과 ──
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (en) {
+      if (en.isIntersecting) { en.target.classList.add('on'); io.unobserve(en.target); }
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(function (el) { io.observe(el); });
+</script>
 </body>
 </html>
