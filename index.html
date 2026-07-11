@@ -3,18 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>재영 ♥ ○○ 모바일 청첩장</title>
+  <title>재영 ♥ 한나 모바일 청첩장</title>
 
-  <!-- 카카오톡/SNS 공유 미리보기 (문구·사진 확정되면 교체) -->
+  <!-- 카카오톡/SNS 공유 미리보기 -->
   <meta property="og:type" content="website">
-  <meta property="og:title" content="장재영 ♥ ○○○ 결혼합니다">
-  <meta property="og:description" content="2026년 10월 24일 토요일 오후 4시 · ○○웨딩홀">
+  <meta property="og:title" content="장재영 ♥ 정한나 결혼합니다">
+  <meta property="og:description" content="2027년 3월 20일 토요일 오후 4시 30분 · 대전 라도무스아트센터 루미니스홀">
   <meta property="og:image" content="https://jjyviva.github.io/wedding-invitation/photos/img10.jpg">
   <meta property="og:url" content="https://jjyviva.github.io/wedding-invitation/">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@200;300;400;500&family=Crimson+Pro:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@200;300;400;500&family=Crimson+Pro:ital,wght@0,300;0,400;1,300&family=Great+Vibes&display=swap" rel="stylesheet">
 
   <style>
     :root {
@@ -65,59 +65,69 @@
       border: 0;
     }
 
-    /* ── 1페이지: 표지 ───────────────────────── */
+    /* ── 1페이지: 표지 (전체배경 사진) ────────── */
     .cover {
+      position: relative;
       min-height: 100svh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      padding: 56px 28px 40px;
+      padding: 0;
+      overflow: hidden;
     }
-    .cover .names {
-      font-size: 27px;
-      font-weight: 300;
-      letter-spacing: 4px;
-      line-height: 1.5;
-      margin-bottom: 6px;
-    }
-    .cover .names .and {
-      display: block;
-      font-size: 14px;
-      color: var(--sub);
-      letter-spacing: 8px;
-      margin: 6px 0;
-    }
-    .cover .names-en {
-      font-family: 'Crimson Pro', serif;
-      font-style: italic;
-      font-weight: 300;
-      font-size: 15px;
-      color: var(--sub);
-      letter-spacing: 2px;
-      margin-bottom: 30px;
-    }
-    .cover-photo {
-      width: min(78%, 300px);
-      aspect-ratio: 3 / 4.1;
-      margin: 0 auto 30px;
-      border-radius: 160px 160px 8px 8px;
+    .cover-bg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
       object-fit: cover;
-      display: block;
+      object-position: center 60%;
     }
-    .cover .when-where {
-      font-size: 14.5px;
+    .cover::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, rgba(255,255,255,0.10) 0%, transparent 30%, transparent 58%, rgba(20,17,15,0.38) 100%);
+      pointer-events: none;
+    }
+    .cover-top {
+      position: absolute;
+      top: 60px;
+      left: 32px;
+      z-index: 1;
+      text-align: left;
+      font-size: 21px;
       font-weight: 300;
-      line-height: 2;
-      color: var(--sub);
+      letter-spacing: 13px;
+      line-height: 2.35;
+      color: #4d4a47;
+      text-shadow: 0 0 14px rgba(255,255,255,0.45);
+    }
+    .cover-top .and {
+      font-size: 16px;
+      color: #6b665f;
+    }
+    .cover-bottom {
+      position: absolute;
+      bottom: 46px;
+      left: 0;
+      right: 0;
+      z-index: 1;
+      text-align: center;
+      color: #ffffff;
+      text-shadow: 0 1px 16px rgba(0,0,0,0.5);
+    }
+    .cover-bottom .script {
+      font-family: 'Great Vibes', cursive;
+      font-size: 46px;
+      font-weight: 400;
+      line-height: 1.2;
+      margin-bottom: 16px;
+    }
+    .cover-bottom .when,
+    .cover-bottom .where {
+      font-size: 15px;
+      font-weight: 300;
+      line-height: 1.95;
       letter-spacing: 1px;
     }
-    .scroll-hint {
-      margin-top: 34px;
-      color: var(--accent);
-      font-size: 18px;
-      animation: bob 1.8s ease-in-out infinite;
-    }
-    @keyframes bob { 0%,100% { transform: translateY(0); opacity:.5 } 50% { transform: translateY(7px); opacity:1 } }
 
     /* ── 2페이지 최상단: D-day ───────────────── */
     .dday {
@@ -436,17 +446,17 @@
 
   <!-- ═══ 1페이지: 표지 ═══ -->
   <section class="cover">
-    <div class="label">WEDDING INVITATION</div>
-    <!-- TODO: 신랑·신부 이름 -->
-    <div class="names">장재영<span class="and">그리고</span>○○○</div>
-    <div class="names-en">Jaeyoung &amp; ○○○</div>
-    <img class="cover-photo" src="photos/img10.jpg" alt="웨딩 사진">
-    <!-- TODO: 예식 일시·장소 -->
-    <div class="when-where">
-      2026년 10월 24일 토요일 오후 4시<br>
-      ○○웨딩홀 ○층 ○○홀
+    <img class="cover-bg" src="photos/img10.jpg" alt="장재영과 정한나의 웨딩 사진">
+    <div class="cover-top">
+      장재영<br>
+      <span class="and">그리고</span><br>
+      정한나
     </div>
-    <div class="scroll-hint">⌄</div>
+    <div class="cover-bottom">
+      <div class="script">Jaeyeong &amp; Hanna</div>
+      <div class="when">2027년 3월 20일 (토) 오후 4시 30분</div>
+      <div class="where">대전 라도무스아트센터 루미니스홀</div>
+    </div>
   </section>
 
   <!-- ═══ 2페이지 최상단: D-day ═══ -->
@@ -460,7 +470,7 @@
       <div class="unit"><div class="num" id="cd-m">0</div><div class="txt">분</div></div>
       <div class="unit"><div class="num" id="cd-s">0</div><div class="txt">초</div></div>
     </div>
-    <div class="date-line">2026. 10. 24. SAT PM 4:00</div>
+    <div class="date-line">2027. 3. 20. SAT PM 4:30</div>
   </section>
 
   <!-- ═══ 초대글 ═══ -->
@@ -476,10 +486,9 @@
       더없는 기쁨으로 간직하겠습니다.
     </p>
     <hr class="hairline">
-    <!-- TODO: 혼주 성함 -->
     <div class="parents">
-      ○○○ · ○○○ <span class="rel">의 아들</span> 재영<br>
-      ○○○ · ○○○ <span class="rel">의 딸</span> ○○
+      장계철 · 양금점 <span class="rel">의 장남</span> 재영<br>
+      정건원 · 박미선 <span class="rel">의 장녀</span> 한나
     </div>
   </section>
 
@@ -500,16 +509,14 @@
   <section class="venue reveal">
     <div class="label">LOCATION</div>
     <h2 class="section-title">오시는 길</h2>
-    <!-- TODO: 예식장 이름·주소 -->
-    <div class="place">○○웨딩홀 ○층 ○○홀</div>
+    <div class="place">라도무스아트센터 루미니스홀</div>
     <div class="addr">
-      서울특별시 ○○구 ○○로 000<br>
-      지하철 0호선 ○○역 0번 출구 도보 5분
+      대전광역시 유성구 동서대로 639 (원신흥동)<br>
+      Tel. 042-823-5220
     </div>
     <div class="map-btns">
-      <!-- TODO: 지도 링크 연결 -->
-      <a href="#" onclick="alert('예식장이 정해지면 연결됩니다'); return false;">네이버 지도</a>
-      <a href="#" onclick="alert('예식장이 정해지면 연결됩니다'); return false;">카카오맵</a>
+      <a href="https://map.naver.com/p/search/%EB%9D%BC%EB%8F%84%EB%AC%B4%EC%8A%A4%EC%95%84%ED%8A%B8%EC%84%BC%ED%84%B0" target="_blank" rel="noopener">네이버 지도</a>
+      <a href="https://map.kakao.com/link/search/%EB%9D%BC%EB%8F%84%EB%AC%B4%EC%8A%A4%EC%95%84%ED%8A%B8%EC%84%BC%ED%84%B0" target="_blank" rel="noopener">카카오맵</a>
     </div>
   </section>
 
@@ -534,7 +541,7 @@
     </div>
   </section>
 
-  <footer>Jaeyoung &amp; ○○○ · 24 October 2026</footer>
+  <footer>Jaeyeong &amp; Hanna · 20 March 2027</footer>
 </div>
 
 <!-- 전체보기 오버레이 -->
@@ -567,8 +574,7 @@
     'photos/img06.jpg','photos/img07.jpg','photos/img08.jpg','photos/img09.jpg'
   ];
 
-  // TODO: 예식 일시 확정되면 교체
-  var WEDDING_AT = new Date('2026-10-24T16:00:00+09:00');
+  var WEDDING_AT = new Date('2027-03-20T16:30:00+09:00');
 
   // ── D-day 카운트다운 ──
   function pad(n) { return n < 10 ? '0' + n : '' + n; }
