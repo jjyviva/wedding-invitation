@@ -275,6 +275,38 @@
       color: var(--sub);
       line-height: 1.9;
     }
+    .map-embed {
+      width: 100%;
+      height: 250px;
+      border: 1px solid var(--hairline);
+      border-radius: 12px;
+      margin-top: 26px;
+      display: block;
+    }
+    .way-list {
+      max-width: 340px;
+      margin: 34px auto 0;
+      text-align: left;
+    }
+    .way {
+      padding: 16px 2px;
+      border-top: 1px dashed var(--hairline);
+    }
+    .way:last-child { border-bottom: 1px dashed var(--hairline); }
+    .way-title {
+      font-size: 12px;
+      letter-spacing: 3px;
+      color: var(--accent);
+      margin-bottom: 7px;
+    }
+    .way-desc {
+      font-size: 13.5px;
+      font-weight: 300;
+      line-height: 1.85;
+      color: var(--ink);
+      word-break: keep-all;
+    }
+    .way-desc b { font-weight: 500; }
     .map-btns {
       display: flex;
       justify-content: center;
@@ -521,9 +553,34 @@
       대전광역시 유성구 동서대로 639 (원신흥동)<br>
       Tel. 042-823-5220
     </div>
+    <iframe class="map-embed" title="라도무스아트센터 약도"
+      src="https://www.openstreetmap.org/export/embed.html?bbox=127.3465%2C36.3283%2C127.3585%2C36.3363&amp;layer=mapnik&amp;marker=36.33227%2C127.35246"
+      loading="lazy"></iframe>
     <div class="map-btns">
       <a href="https://map.naver.com/p/search/%EB%9D%BC%EB%8F%84%EB%AC%B4%EC%8A%A4%EC%95%84%ED%8A%B8%EC%84%BC%ED%84%B0" target="_blank" rel="noopener">네이버 지도</a>
       <a href="https://map.kakao.com/link/search/%EB%9D%BC%EB%8F%84%EB%AC%B4%EC%8A%A4%EC%95%84%ED%8A%B8%EC%84%BC%ED%84%B0" target="_blank" rel="noopener">카카오맵</a>
+    </div>
+    <div class="way-list">
+      <div class="way">
+        <div class="way-title">지하철 + 버스</div>
+        <div class="way-desc">
+          대전 1호선 <b>유성온천역</b> 6번 출구 앞 정류장에서<br>
+          <b>106번</b> 승차 → <b>흥도초등학교</b> 하차<br>
+          <b>706번</b> 승차 → <b>등기소(아이파크시티)</b> 하차
+        </div>
+      </div>
+      <div class="way">
+        <div class="way-title">자가용</div>
+        <div class="way-desc">
+          <b>유성IC</b>에서 공주·계룡산 방면 좌회전 후 직진,<br>
+          도안고등학교 지나 <b>목원대사거리</b>에서 우회전 500m<br>
+          내비게이션: "라도무스아트센터" 검색
+        </div>
+      </div>
+      <div class="way">
+        <div class="way-title">주차</div>
+        <div class="way-desc">건물 전용 주차장 이용 가능</div>
+      </div>
     </div>
   </section>
 
