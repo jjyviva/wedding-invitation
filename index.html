@@ -377,6 +377,23 @@
       margin-left: 12px;
     }
 
+    /* ── 하객 사진·영상 공유 ─────────────────── */
+    .share .share-desc {
+      font-size: 14.5px;
+      font-weight: 300;
+      line-height: 2.1;
+      color: var(--ink);
+      word-break: keep-all;
+    }
+    .share .btn-outline { text-decoration: none; }
+    .share .share-note {
+      margin-top: 16px;
+      font-size: 11.5px;
+      font-weight: 300;
+      color: var(--sub);
+      letter-spacing: 0.5px;
+    }
+
     footer {
       padding: 44px 28px 56px;
       text-align: center;
@@ -605,6 +622,19 @@
     </div>
   </section>
 
+  <!-- ═══ 하객 사진·영상 공유 ═══ -->
+  <section class="share reveal">
+    <div class="label">SHARE YOUR MOMENTS</div>
+    <h2 class="section-title">저희의 순간을 담아주세요</h2>
+    <p class="share-desc">
+      여러분의 시선으로 담아주신 사진과 영상은<br>
+      저희에게 가장 소중한 선물이 됩니다.<br>
+      이 날의 장면들을 공유 앨범에 함께 남겨주세요.
+    </p>
+    <a class="btn-outline" href="#" onclick="openAlbum(event)">사진·영상 공유하기</a>
+    <p class="share-note">버튼을 누르면 공유 앨범이 열립니다</p>
+  </section>
+
   <footer>Jaeyeong &amp; Hanna · 20 March 2027</footer>
 </div>
 
@@ -761,6 +791,15 @@
     if (e.key === 'ArrowRight') lbMove(1);
     if (e.key === 'Escape') closeLightbox();
   });
+
+  // ── 하객 사진·영상 공유 앨범 ──
+  // TODO: 구글 포토 공유 앨범 링크 (링크 공유 + 공동작업 허용 켜기)
+  var GUEST_ALBUM_URL = '';
+  function openAlbum(e) {
+    e.preventDefault();
+    if (GUEST_ALBUM_URL) window.open(GUEST_ALBUM_URL, '_blank', 'noopener');
+    else alert('공유 앨범을 준비 중이에요. 조금만 기다려주세요!');
+  }
 
   // ── 계좌 아코디언 / 복사 ──
   function toggleAcc(btn) { btn.parentElement.classList.toggle('open'); }
