@@ -30,10 +30,17 @@
 - 약도: 구글 지도 keyless 임베드 (`maps.google.com/maps?q=라도무스아트센터&output=embed`).
   처음에 OpenStreetMap을 썼다가 좌표 오류 + 해당 지역 데이터 부실로 교체함 (2026-09).
   OSM으로 되돌리지 말 것.
+- **계정 구분 (사용자 확인, 2026-09):** 하객 공유 앨범(구글 포토)은 **wogkwo@gmail.com**,
+  RSVP 구글폼·스프레드시트는 **jjyviva@gmail.com** 소유.
+- **RSVP 연동 (완료, 2026-09):** 청첩장 안의 자체 입력창(구분/성함/참석 여부) → 숨은 iframe으로
+  구글폼 `formResponse`에 POST → 연결된 스프레드시트에 자동 누적. 하객은 구글폼 화면을 보지 않음.
+  - 폼 편집: https://docs.google.com/forms/d/1FQxpwX6mUcTZb3no0a_cqfJpJH5QcBBARYxS265zE_w/edit
+  - 응답 시트: https://docs.google.com/spreadsheets/d/1WoI3TnJGtCllO0m2XEiYPTNteNHptqbI5G6ZC1BWeJ8/edit
+  - 항목 ID: 구분=entry.1591084349(신랑측/신부측), 성함=entry.2125524054, 참석 여부=entry.1783438237(참석/불참)
+  - 주의: 폼에서 질문을 추가/삭제/유형 변경하면 entry ID가 바뀔 수 있음 → index.html의 hidden input name도 맞춰야 함.
+    옵션 텍스트("신랑측" 등)도 폼과 index.html이 글자 그대로 일치해야 시트에 기록됨.
 
 ## 남은 작업 (미확정 항목)
-- RSVP 구글폼: 참석 의사 전달 섹션의 `RSVP_FORM_URL`이 비어 있음 (현재 준비 중 안내 표시).
-  사용자가 구글폼 만들어 링크 주면 연결. 항목 추천: 성함/신랑·신부측/참석 여부/동행 인원/식사 여부.
 - 인사말 확정 문구 (현재 임시 문구)
 - 계좌번호 (현재 ○○ 자리표시) — 신랑측/신부측 아코디언에 채울 것
 - 갤러리 사진 최종 선별 (현재 예시 30장 전부 노출 중)
