@@ -275,13 +275,22 @@
       color: var(--sub);
       line-height: 1.9;
     }
-    .map-embed {
+    .map-sketch {
       width: 100%;
-      height: 250px;
+      margin-top: 26px;
       border: 1px solid var(--hairline);
       border-radius: 12px;
-      margin-top: 26px;
-      display: block;
+      overflow: hidden;
+      background: var(--bg);
+    }
+    .map-sketch svg { display: block; width: 100%; height: auto; }
+    .map-sketch text { font-family: inherit; }
+    .map-caption {
+      margin-top: 10px;
+      font-size: 11.5px;
+      font-weight: 300;
+      color: var(--sub);
+      letter-spacing: 0.5px;
     }
     .way-list {
       max-width: 340px;
@@ -689,9 +698,50 @@
       대전광역시 유성구 동서대로 639 (원신흥동)<br>
       Tel. 042-823-5220
     </div>
-    <iframe class="map-embed" title="라도무스아트센터 약도"
-      src="https://maps.google.com/maps?q=%EB%9D%BC%EB%8F%84%EB%AC%B4%EC%8A%A4%EC%95%84%ED%8A%B8%EC%84%BC%ED%84%B0&amp;hl=ko&amp;z=16&amp;output=embed"
-      loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+    <div class="map-sketch" role="img" aria-label="라도무스아트센터 약도: 동서대로와 도안대로가 만나는 도안네거리 북동쪽">
+      <svg viewBox="0 0 360 250" xmlns="http://www.w3.org/2000/svg">
+        <!-- 갑천 -->
+        <path d="M -8 78 C 40 70, 72 42, 92 -8" fill="none" stroke="#d3dde2" stroke-width="16" stroke-linecap="round"/>
+        <text x="22" y="46" font-size="9" fill="#8fa3ad" letter-spacing="1">갑천</text>
+
+        <!-- 도로 -->
+        <rect x="0" y="152" width="360" height="24" fill="#e6ded1"/>
+        <rect x="140" y="0" width="22" height="250" fill="#e6ded1"/>
+        <line x1="0" y1="164" x2="360" y2="164" stroke="#fffdf9" stroke-width="1" stroke-dasharray="6 6"/>
+        <line x1="151" y1="0" x2="151" y2="250" stroke="#fffdf9" stroke-width="1" stroke-dasharray="6 6"/>
+        <text x="352" y="146" font-size="9.5" fill="#97897b" text-anchor="end" letter-spacing="1.5">동서대로</text>
+        <text x="166" y="20" font-size="9.5" fill="#97897b" letter-spacing="1.5">도안대로</text>
+        <text x="132" y="194" font-size="9.5" fill="#7a6f63" text-anchor="end" letter-spacing="1">도안네거리</text>
+
+        <!-- 주변 건물 -->
+        <rect x="58" y="98" width="70" height="34" rx="5" fill="#ece6dc"/>
+        <text x="93" y="113" font-size="8.5" fill="#97897b" text-anchor="middle">한국도로교통공단</text>
+        <text x="93" y="124" font-size="7.5" fill="#b3a798" text-anchor="middle">대전세종충남지부</text>
+
+        <rect x="256" y="98" width="86" height="34" rx="5" fill="#ece6dc"/>
+        <text x="299" y="113" font-size="8.5" fill="#97897b" text-anchor="middle">신한은행</text>
+        <text x="299" y="124" font-size="7.5" fill="#b3a798" text-anchor="middle">대전지방법원 등기소</text>
+
+        <rect x="186" y="196" width="88" height="32" rx="5" fill="#ece6dc"/>
+        <text x="230" y="216" font-size="8.5" fill="#97897b" text-anchor="middle">힐스테이트 도안</text>
+
+        <rect x="58" y="196" width="66" height="32" rx="5" fill="#ece6dc"/>
+        <text x="91" y="216" font-size="8.5" fill="#97897b" text-anchor="middle">온솔동물병원</text>
+
+        <!-- 라도무스아트센터 (도안네거리 북동쪽) -->
+        <rect x="172" y="100" width="72" height="44" rx="7" fill="#fffdf9" stroke="#b08d84" stroke-width="1.5"/>
+        <text x="208" y="119" font-size="10" fill="#4a423b" text-anchor="middle" letter-spacing="0.5">라도무스</text>
+        <text x="208" y="133" font-size="10" fill="#4a423b" text-anchor="middle" letter-spacing="0.5">아트센터</text>
+        <path d="M 208 66 c -8 0 -13 6 -13 13 c 0 9 13 21 13 21 c 0 0 13 -12 13 -21 c 0 -7 -5 -13 -13 -13 z" fill="#b08d84"/>
+        <circle cx="208" cy="79" r="4" fill="#fffdf9"/>
+
+        <!-- 나침반 -->
+        <circle cx="336" cy="26" r="11" fill="none" stroke="#ded3c5"/>
+        <path d="M 336 17 L 340 28 L 336 25 L 332 28 Z" fill="#b08d84"/>
+        <text x="336" y="45" font-size="7.5" fill="#97897b" text-anchor="middle">N</text>
+      </svg>
+    </div>
+    <p class="map-caption">도안네거리 북동쪽 · 동서대로 639</p>
     <div class="map-btns">
       <a href="https://map.naver.com/p/search/%EB%9D%BC%EB%8F%84%EB%AC%B4%EC%8A%A4%EC%95%84%ED%8A%B8%EC%84%BC%ED%84%B0" target="_blank" rel="noopener">네이버 지도</a>
       <a href="https://map.kakao.com/link/search/%EB%9D%BC%EB%8F%84%EB%AC%B4%EC%8A%A4%EC%95%84%ED%8A%B8%EC%84%BC%ED%84%B0" target="_blank" rel="noopener">카카오맵</a>
@@ -765,7 +815,7 @@
       이 날의 장면들을 공유 앨범에 함께 남겨주세요.
     </p>
     <a class="btn-outline" href="#" onclick="openAlbum(event)">사진·영상 공유하기</a>
-    <p class="share-note">버튼을 누르면 공유 앨범이 열립니다</p>
+    <p class="share-note">버튼을 누르면 구글 포토 공유 앨범이 열려요.<br>앨범에서 <b>'추가'</b>를 누르면 사진·영상을 올리실 수 있습니다.</p>
   </section>
 
   <footer>Jaeyeong &amp; Hanna · 20 March 2027</footer>
